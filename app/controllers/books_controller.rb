@@ -25,6 +25,7 @@ class BooksController < ApplicationController
   # GET /books/new.xml
   def new
     @book = Book.new
+    @book.name = session[:last_user]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,9 +43,12 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(params[:book])
 
+    session[:last_user] = params[:book][:name]
+
+
     respond_to do |format|
       if @book.save
-        format.html { redirect_to(@book, :notice => 'Book was successfully created.') }
+        format.html { redirect_to(new_book_url, :notice => 'Book was successfully created.') }
         format.xml  { render :xml => @book, :status => :created, :location => @book }
       else
         format.html { render :action => "new" }
