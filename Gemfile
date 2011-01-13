@@ -6,6 +6,10 @@ gem 'rails', '3.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem "oa-oauth", :require => "omniauth/oauth"
+gem 'oa-openid', :require => 'omniauth/openid'
+gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
