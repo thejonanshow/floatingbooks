@@ -6,18 +6,61 @@
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" %>
   <%= csrf_meta_tag %>
+  <link href="stylesheets/floatingbook.css" type="text/css" rel="stylesheet" />
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
 </head>
-<body>
-  <%= yield :search %>
-  <%= flash_helper.html_safe %>
-  <%= yield %>
-	<div id="user_nav">
-	  <% if user_signed_in? %>
-	    Signed in as <%= current_user.email %>. Not you?
-	    <%= link_to "Sign out", destroy_user_session_path %>
-	  <% else %>
-	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-	  <% end %>
-	</div>
+<body class="home-page">
+	<div id="whopper">
+		<div id="header">
+		  <a id="logo" href="/">Floating Book</a>
+      <ul id="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="">Manage My Library</a></li>
+        <li><a href="">Search</a></li>      
+      </ul>  
+    </div><!-- end header-->
+    <div id="banner">
+		  <%= yield :search %>
+    </div><!-- end banner-->
+		<div id="middle">
+		  <div id="midInner">
+		    
+		    <div id="callout">    
+  		    <div class="first">
+              <h2>Read books and you will be Smart!</h2>
+              <p>Search through the FloatingBooks library or add a new book for others to enjoy. Thanks for helping others become smart, too.</p>
+    		  </div>
+		  
+  		  
+  		    	<div >
+              <h2>MANAGE <span>MY ACCOUNT</span></h2>
+              <p>Add a book, subtract a book, check out something new or return a book so someone else can enjoy. </p>
+          	</div>
+  		  
+		  
+    		  <div class="user_nav">
+    		    <h2>LOG <span>ME IN</span></h2>
+  	    	  <%= flash_helper.html_safe %>
+              <%= yield %>
+        	  <% if user_signed_in? %>
+        	    Signed in as <%= current_user.email %>. Not you?
+        	    <%= link_to "Sign out", destroy_user_session_path %>
+        	  <% else %>
+        	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+        	  <% end %>
+    		  </div>
+		  </div>
+		  
+		  
+      <div class="clear"></div>
+      </div>
+		</div><!-- end middle -->
+    <div id="footer">
+      
+		</div><!-- end middle -->
+</div><!-- end whopper -->
+
 </body>
+
 </html>
