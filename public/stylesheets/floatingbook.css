@@ -129,3 +129,27 @@ a.go:hover{
 #callout div.user_nav{
   margin:0 0 0 7px;
 }
+
+/* SERP */
+.results {
+  width:640px;min-height:300px;
+  position:relative;top:34px;
+  margin:0 14px 68px;
+  padding:28px 18px;
+  color:#8b8b8b;
+  border:1px solid #7d7c7c;
+  background:rgba(255,255,255,.7);
+}
+.results h1 {font-weight:lighter;}
+
+/* book rows */
+.results table {
+  width:640px;
+  border-top:1px solid #7d7c7c;
+}
+.resulta tr {
+  min-height:72px;
+  font-size:18px;
+  border-bottom:1px solid #7d7c7c;
+}
+.results img {width:64px;}
