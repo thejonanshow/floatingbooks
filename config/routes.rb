@@ -4,10 +4,13 @@ Floatingbooks::Application.routes.draw do
   match "verify/:id" => "books#verify", :as => :verify
   match "confirm/:id" => "books#confirm", :as => :confirm
   match "destroy/:id" => "books#destroy", :as => :destroy
+  match "search" => "books#search", :as => :search
 
   resources :books
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  root :to => "books#search"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +61,6 @@ Floatingbooks::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "books#index"
 
   # See how all your routes lay out with "rake routes"
 

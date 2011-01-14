@@ -1,0 +1,22 @@
+<h1>Listing books</h1>
+
+<table>
+  <tr>
+    <th>Isbn</th>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td>All Books</td>
+  </tr>
+  <% @books.each do |book| %>
+  <tr>
+    <td><%= book.isbn %></td>
+    <td><%= book.name %></td>
+    <td><%= link_to 'Show', book %></td>
+  </tr>
+<% end %>
+
+</table>

@@ -8,7 +8,7 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-
+  <%= yield :search %>
   <%= flash_helper.html_safe %>
   <%= yield %>
 	<div id="user_nav">

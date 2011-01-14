@@ -1,5 +1,14 @@
 class BooksController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:search, :index]
+
+  def search
+    if params[:search]
+      results = Book.search_all(params[:search])
+      @count = results['matches']
+      @books = Book.find_all_by_id results['results'].collect { |hash| hash['docid'] }
+      render :action => :results
+    end
+  end
 
   def return
     @book = Book.find_by_isbn params[:isbn]

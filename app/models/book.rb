@@ -4,6 +4,8 @@ class Book < ActiveRecord::Base
 
   validates_presence_of :isbn
 
+  after_save :updateIndex
+
   def populate_data_from_google
     google_data = get_google_data
     if google_data['feed'] && google_data['feed']['entry']
@@ -43,5 +45,33 @@ class Book < ActiveRecord::Base
     File.open(File.join(Rails.root, 'public', 'floating.label')).read.gsub('{{{IMAGE}}}', get_base64_qrcode).gsub(/[\n|\t|\r]/, "").html_safe
 
   end
+  
+  def updateIndex(indexTankIndex = nil)
+    unless indexTankIndex
+      client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
+      indexTankIndex = client.indexes('books')
+    end
 
+    indexTankIndex.document(self.id.to_s).add({:text => self.title, 
+                                      :title => self.title,
+                                      :author => self.author,
+                                      :description => self.description,
+                                      :subject => self.subject})
+  end
+
+  def self.search_all(query)
+    client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
+    index = client.indexes('books')
+    
+    index.search("#{query} OR title:#{query} OR author:#{query} OR description:#{query} OR subject:#{query}")
+  end
+
+  def self.index
+    client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
+    index = client.indexes('books')
+
+    all.each do |book|
+      book.updateIndex(index)
+    end
+  end
 end
