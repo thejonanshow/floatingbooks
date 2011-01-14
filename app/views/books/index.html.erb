@@ -11,10 +11,12 @@
   <div >
     <h2>MANAGE <span>MY ACCOUNT</span></h2>
     <p>Add a book, subtract a book, check out something new or return a book so someone else can enjoy. </p>
+    <a href="/" class="go">Help Me!</a>
   </div>
 
   <div class="user_nav">
     <h2>LOG <span>ME IN</span></h2>
-    <%= link_to "Login with your g5searchmarketing email.", '/users/auth/google_apps' %>
+    <p>Access the mind-blowing features of FloatingBooks by logging in through your G5 google account.</p>
+    <%= link_to "Login with your g5searchmarketing email.", '/users/auth/google_apps', :class => 'go' %>
   </div>
 </div>
