@@ -2,12 +2,16 @@
   <h1>BOOK SEARCH RESULTS - ( <%= @books.count %> Books )</h1>
   <table>
     <% @books.each do |book| %>
-      <tr>
-        <td><img src="<%= book.thumb %>" alt="Cover of <%= book.title %>" /></td>
+      <tr class="<%= cycle("odd", "even") -%>">
+        <td class="img">
+          <% if book.thumb && !book.thumb.empty? %>
+          <img src="<%= book.thumb %>" alt="Cover of <%= book.title %>" />
+          <% end %>
+        </td>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
-        <td><%= book.user %></td>
-        <td><%= link_to 'Show', book %></td>
+        <td><%= book.user.name %></td>
+        <td class="checkout"><%= link_to 'Checkout', book %></td>
       </tr>
     <% end %>
   </table>
