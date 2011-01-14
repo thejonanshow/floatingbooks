@@ -16,7 +16,7 @@
 
   $(document).ready(function() {
 
-    var labelXml = '<%= @book.build_label_file %>';
+    var labelXml = '<%= @book.read_label_file %>';
     var label = dymo.label.framework.openLabelXml(labelXml);
 
     var printers = dymo.label.framework.getPrinters();

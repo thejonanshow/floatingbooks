@@ -33,9 +33,9 @@ class Book < ActiveRecord::Base
     Base64.encode64(URI.parse(URI.encode("http://chart.googleapis.com/chart?cht=qr&chs=150x150&chld=H|0&chl=#{qrcode}")).read)
   end
 
-  def build_label_file
+  def read_label_file
 
-    File.open(File.join(Rails.root, 'public', 'float.label')).read.gsub('{{{IMAGE}}}', get_base64_qrcode).gsub(/[\n|\t|\r]/, "")
+    File.open(File.join(Rails.root, 'public', 'floating.label')).read.gsub('{{{IMAGE}}}', get_base64_qrcode).gsub(/[\n|\t|\r]/, "")
 
   end
 
