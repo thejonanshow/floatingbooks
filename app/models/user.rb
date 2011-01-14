@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :books
+  has_many :checked_out_items, :class_name => "Book", :foreign_key => :checked_out_to_id
   has_many :user_tokens
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

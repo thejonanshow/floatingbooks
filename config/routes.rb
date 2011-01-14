@@ -1,5 +1,9 @@
 Floatingbooks::Application.routes.draw do
+  match "checkout/:isbn" => "books#checkout", :as => :checkout
+  match "return/:isbn" => "books#return", :as => :return
+
   resources :books
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # The priority is based upon order of creation:

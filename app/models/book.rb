@@ -1,6 +1,6 @@
 class Book < ActiveRecord::Base
-
   belongs_to :user
+  belongs_to :checked_out_to, :class_name => 'User'
 
   def get_google_data
     url = URI.parse("http://books.google.com/books/feeds/volumes?q=isbn:#{isbn}")
