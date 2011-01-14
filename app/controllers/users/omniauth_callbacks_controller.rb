@@ -11,7 +11,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
          redirect_to edit_user_registration_path
       else
     
-      authentication = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+        authentication = UserToken.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
    
         if authentication
           flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => omniauth['provider']

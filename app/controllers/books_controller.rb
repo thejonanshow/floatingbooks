@@ -23,6 +23,9 @@ class BooksController < ApplicationController
     end
   end
 
+  def manage
+  end
+
   def verify
     @book = Book.find params[:id]
     @book.populate_data_from_google
