@@ -22,10 +22,10 @@
     </div><!-- end header-->
     <div id="banner">
       <%= render :partial => "books/search" %>
+      <%= flash_helper.html_safe %>
     </div><!-- end banner-->
 		<div id="middle">
 		  <div id="midInner">
-        <%= flash_helper.html_safe %>
         <%= yield %>
         <% if user_signed_in? %>
           Signed in as <%= current_user.email %>. Not you?
