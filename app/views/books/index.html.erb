@@ -16,7 +16,7 @@
     <td><%= book.isbn %></td>
     <td><%= book.name %></td>
     <td><%= link_to 'Show', book %></td>
-    <td><%= button_to 'Destroy', {:controller => :books, :action => 'destroy'}, :method => :delete %></td>
+    <td><%= button_to 'Destroy', {:controller => :books, :action => 'destroy', :id => book.id}, :method => :delete %></td>
   </tr>
 <% end %>
 <tr>
