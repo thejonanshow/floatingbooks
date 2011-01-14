@@ -1,18 +1,5 @@
-is this your book?
+<h1>Confirm New Book Details</h1>
 
-<ul>
-  <li><%= @book.title %></li>
-  <li><%= @book.isbn %></li>
-  <li><%= @book.author%></li>
-  <li><%= @book.description%></li>
-  <li><%= @book.pages%></li>
-  <li><%= @book.subject%></li>
-  <li><%= @book.publisher%></li>
-  <li><%= @book.language%></li>
-  <li><%= @book.date%></li>
-</ul>
+<%= render 'form' %>
 
-<%= link_to "yes", confirm_path(@book) %>
-<%= link_to 'no', @book, :method => :delete %>
-
-
+<%= link_to 'Cancel', @book, :method => :delete %>
