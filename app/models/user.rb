@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
       book.save
     end
   end
+
+  def name
+    self.email.split('@').first.gsub('.',' ').titleize
+  end
   
   def self.new_with_session(params, session)
     super.tap do |user|
