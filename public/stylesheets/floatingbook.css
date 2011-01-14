@@ -133,9 +133,13 @@ body.home-page #banner #search-box { top:230px; left:347px; }
   width:640px;
   border-top:1px solid #7d7c7c;
 }
-.resulta tr {
+.results tr {
   min-height:72px;
   font-size:18px;
   border-bottom:1px solid #7d7c7c;
 }
+.results td {
+  padding:6px;
+}
+.results .odd td {background:#edecec;}
 .results img {width:64px;}
