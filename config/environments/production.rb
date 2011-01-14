@@ -1,3 +1,5 @@
+INDEXTANK_INDEX = 'books'
+
 Floatingbooks::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
