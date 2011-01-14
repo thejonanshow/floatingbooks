@@ -1,32 +1,27 @@
 <div class="results">
-<h1>Listing books</h1>
 
 <table>
-  <tr>
-    <th>Isbn</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 <tr>
-  <td>Checked out books</td>
+  <td colspan="6"><h2>Checked out books</h2></td>
 </tr>
 <% current_user.checked_out_items.each do |book| %>
   <tr>
-    <td><%= book.isbn %></td>
-    <td><%= book.name %></td>
+    <td><%= book.title %></td>
+    <td><%= book.user.name %></td>
+    <td></td>
+    <td></td>
+    <td></td>
     <td><%= link_to 'Return', return_path(book.isbn) %></td> 
   </tr>
 <% end %>
 
 <tr>
-  <td>Your books</td>
+  <td colspan='6'><h2>Your books</h2></td>
 </tr>
 <% current_user.books.each do |book| %>
   <tr>
-    <td><%= book.isbn %></td>
-    <td><%= book.name %></td>
+    <td><%= book.title %></td>
+    <td><%= book.user.name %></td>
     <td><%= link_to 'Checkout', checkout_path(book.isbn) %></td> 
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>

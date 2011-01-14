@@ -48,7 +48,7 @@ class BooksController < ApplicationController
       @book.checked_out_at = Time.now
       @book.save
       flash[:notice] = "Book checked out!"
-      redirect_to :back
+      redirect_to '/books/manage'
     end
   end
   # GET /books
