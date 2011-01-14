@@ -3,6 +3,7 @@ Floatingbooks::Application.routes.draw do
   match "return/:isbn" => "books#return", :as => :return
   match "verify/:id" => "books#verify", :as => :verify
   match "confirm/:id" => "books#confirm", :as => :confirm
+  match "destroy/:id" => "books#destroy", :as => :destroy
 
   resources :books
 
