@@ -5,6 +5,7 @@ Floatingbooks::Application.routes.draw do
   match "confirm/:id" => "books#confirm", :as => :confirm
   match "destroy/:id" => "books#destroy", :as => :destroy
   match "search" => "books#search", :as => :search
+  match "books/manage" => "books#manage", :as => :manage
 
   resources :books
 

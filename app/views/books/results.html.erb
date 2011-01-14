@@ -2,7 +2,7 @@
   <h1>BOOK SEARCH RESULTS - ( <%= @books.count %> Books )</h1>
   <table>
     <% @books.each do |book| %>
-      <tr>
+      <tr class="<%= cycle("odd", "even") -%>">
         <td><img src="<%= book.thumb %>" alt="Cover of <%= book.title %>" /></td>
         <td><%= book.title %></td>
         <td><%= book.author %></td>
