@@ -26,7 +26,7 @@ class Book < ActiveRecord::Base
   end
 
   def qrcode
-    "http://chart.googleapis.com/chart?cht=qr&chs=250x250&chld=H|0&chl=http://floatingbooks.heroku.com/books/?isbn=#{isbn.gsub(/[ |-]/,'')}"
+    "http://chart.googleapis.com/chart?cht=qr&chs=250x250&chld=H|0&chl=http://floatingbooks.heroku.com/books/?isbn=#{URI.encode(isbn)}"
   end
 
   def get_base64_qrcode
