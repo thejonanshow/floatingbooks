@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
   end
 
   def get_google_data
-    url = URI.parse("http://books.google.com/books/feeds/volumes?q=isbn:#{isbn.gsub(/[ |-]/,'')}")
+    url = URI.parse("http://books.google.com/books/feeds/volumes?q=isbn:#{URI.encode(isbn)}")
     net_object = Net::HTTP.get_response url
     Hash.from_xml(net_object.body)
   end
