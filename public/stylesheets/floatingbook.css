@@ -140,7 +140,7 @@ a.go:hover{
   border:1px solid #7d7c7c;
   background:rgba(255,255,255,.7);
 }
-.results h1 {font-weight:lighter;}
+.results h1 {font-weight:lighter;padding-bottom:8px;}
 
 /* book rows */
 .results table {
@@ -153,14 +153,13 @@ a.go:hover{
   border-bottom:1px solid #7d7c7c;
 }
 .results td {
-  padding:6px;
-  vertical-align:middle;
+  padding:12px 6px 6px;
 }
 .results .odd td {background:#edecec;}
-.results img {width:64px;}
+.results img {width:64px;margin-top:-6px;}
 .results .checkout a {
   font-size:22px;
-  color:#fff;
+  color:#f90;
   font-family:'Josefin Slab', Times, Times New Roman, serif;
   text-decoration:none;
 }
