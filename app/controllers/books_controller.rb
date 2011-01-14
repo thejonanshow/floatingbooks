@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :authenticate_user!, :except => [:search, :index]
+  before_filter :authenticate_user!, :except => [:search]
 
   def search
     if params[:search]
@@ -51,8 +51,6 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.xml
   def index
-    @books = current_user.books
-
     if params[:isbn]
       redirect_to book_url(Book.find_by_isbn(params[:isbn]))
       return

@@ -10,7 +10,7 @@ Floatingbooks::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
-  root :to => "books#search"
+  root :to => "books#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

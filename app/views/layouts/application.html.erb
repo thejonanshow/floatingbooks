@@ -20,38 +20,19 @@
         <li><a href="">Search</a></li>      
       </ul>  
     </div><!-- end header-->
-    <div id="banner">
-		  <%= yield :search %>
+    <div id="banner" <%= yield :banner_class %>>
+      <%= render :partial => "books/search" %>
     </div><!-- end banner-->
 		<div id="middle">
 		  <div id="midInner">
-		    
-		    <div id="callout">    
-  		    <div class="first">
-              <h2>Read books and you will be Smart!</h2>
-              <p>Search through the FloatingBooks library or add a new book for others to enjoy. Thanks for helping others become smart, too.</p>
-    		  </div>
-		  
-  		  
-  		    	<div >
-              <h2>MANAGE <span>MY ACCOUNT</span></h2>
-              <p>Add a book, subtract a book, check out something new or return a book so someone else can enjoy. </p>
-          	</div>
-  		  
-		  
-    		  <div class="user_nav">
-    		    <h2>LOG <span>ME IN</span></h2>
-  	    	  <%= flash_helper.html_safe %>
-              <%= yield %>
-        	  <% if user_signed_in? %>
-        	    Signed in as <%= current_user.email %>. Not you?
-        	    <%= link_to "Sign out", destroy_user_session_path %>
-        	  <% else %>
-        	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-        	  <% end %>
-    		  </div>
-		  </div>
-		  
+        <%= flash_helper.html_safe %>
+        <%= yield %>
+        <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+        <% end %>
 		  
       <div class="clear"></div>
       </div>
