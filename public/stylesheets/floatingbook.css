@@ -45,7 +45,7 @@ body #banner { height:131px; }
   width:960px;
   background:url(/images/int-middle-bg.jpg) repeat;
   min-height:450px;height:auto !important;height:450px;
-	
+	overflow:hidden;
 }
 
 /* Header Stuff */
