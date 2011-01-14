@@ -1,22 +1,14 @@
-<h1>Listing books</h1>
-
-<table>
-  <tr>
-    <th>Isbn</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>All Books</td>
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-    <td><%= book.isbn %></td>
-    <td><%= book.name %></td>
-    <td><%= link_to 'Show', book %></td>
-  </tr>
-<% end %>
-
-</table>
+<div class="results">
+  <h1>BOOK SEARCH RESULTS - ( <%= @books.count %> Books )</h1>
+  <table>
+    <% @books.each do |book| %>
+      <tr>
+        <td><img src="<%= book.thumb %>" alt="Cover of <%= book.title %>" /></td>
+        <td><%= book.title %></td>
+        <td><%= book.author %></td>
+        <td><%= book.user %></td>
+        <td><%= link_to 'Show', book %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
