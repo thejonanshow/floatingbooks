@@ -14,6 +14,18 @@ class BooksController < ApplicationController
     end
   end
 
+  def verify
+    @book = Book.find params[:id]
+    @book.populate_data_from_google
+  end
+
+  def confirm
+    @book = Book.find params[:id]
+    @book.verified = true
+    @book.save
+    redirect_to books_url
+  end
+
   def checkout
     @book = Book.find_by_isbn params[:isbn]
     if @book.checked_out_to
@@ -21,6 +33,7 @@ class BooksController < ApplicationController
       redirect_to :back and return
     else
       @book.checked_out_to = current_user
+      @book.checked_out_at = Time.now
       @book.save
       flash[:notice] = "Book checked out!"
       redirect_to :back
@@ -71,7 +84,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to(new_book_url, :notice => 'Book was successfully created.') }
+        format.html { redirect_to(verify_url(@book), :notice => 'Book was successfully created.') }
         format.xml  { render :xml => @book, :status => :created, :location => @book }
       else
         format.html { render :action => "new" }

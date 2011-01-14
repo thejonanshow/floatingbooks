@@ -1,6 +1,8 @@
 Floatingbooks::Application.routes.draw do
   match "checkout/:isbn" => "books#checkout", :as => :checkout
   match "return/:isbn" => "books#return", :as => :return
+  match "verify/:id" => "books#verify", :as => :verify
+  match "confirm/:id" => "books#confirm", :as => :confirm
 
   resources :books
 

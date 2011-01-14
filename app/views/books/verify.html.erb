@@ -1,0 +1,18 @@
+is this your book?
+
+<ul>
+  <li><%= @book.title %></li>
+  <li><%= @book.isbn %></li>
+  <li><%= @book.author%></li>
+  <li><%= @book.description%></li>
+  <li><%= @book.pages%></li>
+  <li><%= @book.subject%></li>
+  <li><%= @book.publisher%></li>
+  <li><%= @book.language%></li>
+  <li><%= @book.date%></li>
+</ul>
+
+<%= link_to "yes", confirm_path(@book) %>
+<%= link_to 'no', @book, :method => :delete %>
+
+

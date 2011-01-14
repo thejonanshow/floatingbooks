@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114000950) do
+ActiveRecord::Schema.define(:version => 20110114010516) do
 
   create_table "books", :force => true do |t|
     t.string   "isbn"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(:version => 20110114000950) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "checked_out_to_id"
+    t.integer  "pages"
+    t.string   "author"
+    t.string   "title"
+    t.string   "description"
+    t.string   "subject"
+    t.string   "publisher"
+    t.string   "language"
+    t.string   "date"
+    t.datetime "checked_out_at"
+    t.boolean  "verified"
   end
 
   create_table "sessions", :force => true do |t|
