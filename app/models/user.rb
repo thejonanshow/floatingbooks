@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  after_create :collect_books
+
+  def collect_books
+    @books = Book.find_all_by_name self.email
+    @books.each do |book|
+      book.user = self
+      book.save
+    end
+  end
   
   def self.new_with_session(params, session)
     super.tap do |user|
