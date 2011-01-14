@@ -11,7 +11,7 @@
         <td><%= book.title %></td>
         <td><%= book.author %></td>
         <td><%= book.user.name %></td>
-        <td class="checkout"><%= link_to 'Checkout', book %></td>
+        <td class="checkout"><%= link_to 'Checkout', checkout_path(book.isbn) %></td>
       </tr>
     <% end %>
   </table>
