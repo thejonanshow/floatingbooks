@@ -1,6 +1,8 @@
 <% content_for :search do %>
-  <% form_tag search_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  <% end %>
+  <div id='search-box'>
+    <% form_tag search_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Go", { :name => nil, :id => 'goButton' } %>
+    <% end %>
+  </div>
 <% end %>

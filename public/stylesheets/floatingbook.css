@@ -18,52 +18,55 @@ h1, h2, h3, h4{
   font-family:'Josefin Sans', helvetica, arial, sans-serif; 
 }
 
-a{
-  color:#ff9900;
-}
-
-a:hover{
-  color:#f9b248;
-}
-
-a:active, a:visited{
-  color:#d17f05;
-}
+a{color:#ff9900;}
+a:hover{color:#f9b248;}
+a:active{color:#d17f05;}
 
 .clear{
   clear:both;
 }
 
-body.home-page { background:url(../images/home-body-repeat.jpg) repeat-x #eee; }
-body.interior-page { background:url(../images/int-body-repeat.jpg) repeat-x #eee; }
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+body.home-page { background:url(/images/home-body-repeat.jpg) repeat-x #eee; }
+body.interior-page { background:url(/images/int-body-repeat.jpg) repeat-x #eee; }
 
 #whopper { width: 1020px;  margin:auto; }
 #header { height:66px; }
+#banner { position:relative; }
 body.home-page #banner { height:297px; }
 body.interior-page #banner { height:131px; }
-#middle { padding:0 30px; background:url(../images/middle-shadow.jpg) repeat-y #fff;}
+#middle { padding:0 30px; background:url(/images/middle-shadow.jpg) repeat-y #fff;}
 #midInner{
   width:960px;
-  background:url(../images/int-middle-bg.jpg) repeat;
+  background:url(/images/int-middle-bg.jpg) repeat;
   min-height:450px;height:auto !important;height:450px;
 	
 }
 
 /* Header Stuff */
-a#logo { float:left; height:66px; width:420px; background:url(../images/logo.png); text-indent:-9999px; }
+a#logo { float:left; height:66px; width:420px; background:url(/images/logo.png); text-indent:-9999px; }
 
 #nav { float:right; }
 #nav li { float:left; }
 #nav a { display:block; color:#656565; height:50px; border-bottom:6px solid #656565; font-size:16pt; line-height:50px; padding:10px 30px 0; text-decoration:none; font-family:'Josefin Slab', Times, Times New Roman, serif; }
-#nav a:hover { color:#ff9900; border-bottom:6px solid #ff9900; }
+#nav a:hover { color:#ff9900; border-bottom:6px solid #ff9900; background:transparent; }
 
 /*----HomePage-------*/
-
+#search-box { position:absolute; padding:6px; background:#ff9900; }
+body.home-page #banner #search-box { top:230px; left:347px; }
+#search-box input { background:url(/images/mag-glass.jpg) #fff 234px 2px no-repeat; padding:6px; border:0px none; color:#333; width:250px;}
+#search-box input#goButton { width:50px; background:#323232; color:#fff; margin-left:-4px; cursor:pointer; }
+#search-box input#goButton:hover {background:#666;}
 
 /*--Callout Area--*/
 #callout h2{
   font-family:'Josefin Slab', Times, Times New Roman, serif;
-  padding:19px 0 0 27px;
+  padding:19px 0 10px 0;
 }
 
 #callout h2 span{
@@ -72,6 +75,10 @@ a#logo { float:left; height:66px; width:420px; background:url(../images/logo.png
 
 #callout h2 span{
   color:#ff9900;
+}
+
+#callout p{
+  font-size:12px;
 }
 
 #callout{
@@ -83,11 +90,11 @@ a#logo { float:left; height:66px; width:420px; background:url(../images/logo.png
 }
 
 #callout div{
-  width:311px;
+  width:274px;
   float:left;
   display:inline;
   margin:0;
-  padding:0;
+  padding:0 15px 0 22px;
   color: #fff;
   position:relative;
   min-height:147px;height:auto !important;height:147px;
@@ -102,13 +109,9 @@ a#logo { float:left; height:66px; width:420px; background:url(../images/logo.png
 
 #callout div.first h2{
   color:#000;
+  font-size:125%;
 }
 
 #callout div.user_nav{
   margin:0 0 0 7px;
-
-}
-
-#callout div p{
-  padding: 0 10px;
 }
