@@ -49,7 +49,7 @@ class Book < ActiveRecord::Base
   def updateIndex(indexTankIndex = nil)
     unless indexTankIndex
       client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
-      indexTankIndex = client.indexes('books')
+      indexTankIndex = client.indexes(INDEXTANK_INDEX)
     end
 
     indexTankIndex.document(self.id.to_s).add({:text => self.title, 
@@ -61,14 +61,14 @@ class Book < ActiveRecord::Base
 
   def self.search_all(query)
     client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
-    index = client.indexes('books')
+    index = client.indexes(INDEXTANK_INDEX)
     
     index.search("#{query} OR title:#{query} OR author:#{query} OR description:#{query} OR subject:#{query}")
   end
 
   def self.index
     client = IndexTank::Client.new(ENV['INDEXTANK_API_URL'] || 'http://:J4Ya5G8AVcUtJf@72iu.api.indextank.com')  
-    index = client.indexes('books')
+    index = client.indexes(INDEXTANK_INDEX)
 
     all.each do |book|
       book.updateIndex(index)
