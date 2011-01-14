@@ -158,3 +158,9 @@ a.go:hover{
 }
 .results .odd td {background:#edecec;}
 .results img {width:64px;}
+.results .checkout a {
+  font-size:22px;
+  color:#fff;
+  font-family:'Josefin Slab', Times, Times New Roman, serif;
+  text-decoration:none;
+}
