@@ -16,7 +16,7 @@
     <td><%= book.isbn %></td>
     <td><%= book.name %></td>
     <td><%= link_to 'Show', book %></td>
-    <td><%= button_to 'Destroy', {:action => 'destroy'}, :confirm => 'Are you sure?', :method => 'post' %></td>
+    <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 <tr>
