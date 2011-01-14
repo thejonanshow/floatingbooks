@@ -16,13 +16,13 @@
 
   $(document).ready(function() {
 
-    var labelXml = <%= @book.build_label_file %>;
+    var labelXml = '<%= @book.build_label_file %>';
     var label = dymo.label.framework.openLabelXml(labelXml);
 
     var printers = dymo.label.framework.getPrinters();
 
     if (printers.length == 0)
-    throw "No DYMO printers are installed. Install DYMO printers.";
+    alert("No DYMO printers are installed. Install DYMO printers.");
 
     var printerName = "";
     for (var i = 0; i < printers.length; ++i)
@@ -37,7 +37,7 @@
 
   $('#print').click(function() {
     label.print(printerName);
-  }
+  });
 
   });
 
