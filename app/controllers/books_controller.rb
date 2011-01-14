@@ -46,6 +46,7 @@ class BooksController < ApplicationController
 
     if params[:isbn]
       redirect_to book_url(Book.find_by_isbn(params[:isbn]))
+      return
     end
 
     respond_to do |format|
@@ -58,11 +59,7 @@ class BooksController < ApplicationController
   # GET /books/1.xml
   def show
 
-    if params[:isbn]
-      @book = Book.find_by_isbn(params[:isbn])
-    else
-      @book = Book.find(params[:id])
-    end
+    @book = Book.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
