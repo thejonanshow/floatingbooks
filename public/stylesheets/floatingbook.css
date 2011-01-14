@@ -156,7 +156,9 @@ a.go:hover{
   padding:12px 6px 6px;
 }
 .results .odd td {background:#fff;}
-.results img {width:64px;margin-top:-6px;}
+.results .img,
+.results img {width:64px;}
+.results img {margin-top:-6px;}
 .results .checkout a {
   font-size:22px;
   color:#f90;
