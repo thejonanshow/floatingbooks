@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :authenticate_user!, :except => [:search]
+  before_filter :authenticate_user!, :except => [:search, :index]
 
   def search
     if params[:search]
