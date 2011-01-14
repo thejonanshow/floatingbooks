@@ -6,3 +6,4 @@ Floatingbooks::Application.initialize!
 
 # Require Net::http so we can request Google data
 require 'net/http'
+require 'open-uri'

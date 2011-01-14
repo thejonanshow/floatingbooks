@@ -53,7 +53,13 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.xml
   def show
-    @book = Book.find(params[:id])
+
+    param_check = params[:id]
+    if param_check.length == 10 || param_check.length == 13
+      @book = Book.find_by_isbn(param_check)
+    else
+      @book = Book.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb

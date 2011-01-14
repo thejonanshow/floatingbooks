@@ -10,6 +10,39 @@
   <%= @book.name %>
 </p>
 
+<%= javascript_include_tag 'DYMO_label_framework.js' %>
 
+<script type='text/javascript'>
+
+  $(document).ready(function() {
+
+    var labelXml = '<%= @book.build_label_file %>';
+    var label = dymo.label.framework.openLabelXml(labelXml);
+
+    var printers = dymo.label.framework.getPrinters();
+
+    if (printers.length == 0)
+    alert("No DYMO printers are installed. Install DYMO printers.");
+
+    var printerName = "";
+    for (var i = 0; i < printers.length; ++i)
+    {
+      var printer = printers[i];
+        if (printer.printerType == "LabelWriterPrinter")
+        {
+          printerName = printer.name;
+          break;
+        }
+    }
+
+  $('#print').click(function() {
+    label.print(printerName);
+  });
+
+  });
+
+</script>
+
+<%= link_to 'Print Label', '#', :id => 'print' %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
