@@ -15,8 +15,13 @@ class Book < ActiveRecord::Base
       self.publisher = google_data['feed']['entry']['publisher']
       self.language = google_data['feed']['entry']['language']
       self.date = google_data['feed']['entry']['date']
+      self.thumb = google_data['feed']['entry']['link'].first['href']
       save
     end
+  end
+
+  def image
+    thumb.gsub('&zoom=5','')
   end
 
   def get_google_data
