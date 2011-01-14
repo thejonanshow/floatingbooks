@@ -35,7 +35,7 @@ class Book < ActiveRecord::Base
 
   def read_label_file
 
-    File.open(File.join(Rails.root, 'public', 'floating.label')).read.gsub('{{{IMAGE}}}', get_base64_qrcode).gsub(/[\n|\t|\r]/, "")
+    File.open(File.join(Rails.root, 'public', 'floating.label')).read.gsub('{{{IMAGE}}}', get_base64_qrcode).gsub(/[\n|\t|\r]/, "").html_safe
 
   end
 
