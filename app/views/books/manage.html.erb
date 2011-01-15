@@ -22,7 +22,13 @@
   <tr>
     <td><%= book.title %></td>
     <td><%= book.user.name %></td>
-    <td><%= link_to 'Checkout', checkout_path(book.isbn) %></td> 
+    <td>
+      <% if book.checked_out_to %>
+        Checked out to <%= book.checked_out_to.name %> <%= time_ago_in_words book.checked_out_at %> ago.
+      <% else %>
+        <%= link_to 'Checkout', checkout_path(book.isbn) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', book %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
     <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
