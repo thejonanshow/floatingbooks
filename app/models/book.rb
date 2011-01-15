@@ -8,16 +8,16 @@ class Book < ActiveRecord::Base
 
   def populate_data_from_google
     google_data = get_google_data
-    if google_data['feed'] && google_data['feed']['entry']
-      self.author = google_data['feed']['entry']['creator']
-      self.title = google_data['feed']['entry']['title'].first
-      self.description = google_data['feed']['entry']['description']
-      self.pages = google_data['feed']['entry']['format'].first
-      self.subject = google_data['feed']['entry']['subject']
-      self.publisher = google_data['feed']['entry']['publisher']
-      self.language = google_data['feed']['entry']['language']
-      self.date = google_data['feed']['entry']['date']
-      self.thumb = google_data['feed']['entry']['link'].first['href']
+    if google_data
+      self.author      = google_data['creator']
+      self.title       = google_data['title'].first
+      self.description = google_data['description']
+      self.pages       = google_data['format'].first
+      self.subject     = google_data['subject']
+      self.publisher   = google_data['publisher']
+      self.language    = google_data['language']
+      self.date        = google_data['date']
+      self.thumb       = google_data['link'].first['href']
       save
     end
   end
@@ -29,7 +29,13 @@ class Book < ActiveRecord::Base
   def get_google_data
     url = URI.parse("http://books.google.com/books/feeds/volumes?q=isbn:#{URI.encode(isbn)}")
     net_object = Net::HTTP.get_response url
-    Hash.from_xml(net_object.body)
+    result = Hash.from_xml(net_object.body)
+    entry = result['feed']['entry'] if result['feed'] && result['feed']['entry']
+    if entry.kind_of?(Array)
+      return entry.first
+    else
+      return entry
+    end
   end
 
   def qrcode
