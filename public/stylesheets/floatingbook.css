@@ -46,7 +46,18 @@ body #banner { height:131px; }
   position:relative;
   background:url(/images/int-middle-bg.jpg) repeat;
   min-height:450px;height:auto !important;height:450px;
-	overflow:hidden;
+  overflow:hidden;
+  padding-bottom:30px;
+}
+
+span#sign_out_link a {
+  color:#F60;
+}
+
+span#sign_out_link {
+  font-weight:bold;
+  color:#333333;
+  padding-left:15px;
 }
 
 /* Header Stuff */
@@ -194,4 +205,19 @@ a.go:hover{
   color:#f90;
   font-family:'Josefin Slab', Times, Times New Roman, serif;
   text-decoration:none;
+}
+
+/* Show book pages */
+
+img.book_thumb {
+  float:right;
+  padding:29px;
+}
+
+div#show_book p {
+  padding:3px 0;
+}
+
+div#show_book h2 {
+  padding-bottom:3px;
 }

@@ -1,5 +1,34 @@
-<div class="results">
+<div id="show_book" class="results">
 <p id="notice"><%= notice %></p>
+
+<h2><%= @book.title if @book.title %></h2>
+<h3>by <%= @book.author.html_safe if @book.author %></h3>
+<%= image_tag(@book.thumb.gsub('&edge=curl',''), :class => 'book_thumb') if @book.thumb %>
+<br/>
+<p>
+  <b>Description:</b>
+  <%= @book.description.html_safe if @book.description %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @book.subject.html_safe if @book.subject %>
+</p>
+
+<p>
+  <b>Pages:</b>
+  <%= @book.pages if @book.pages %>
+</p>
+
+<p>
+  <b>Publisher:</b>
+  <%= @book.publisher.html_safe if @book.publisher %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @book.date if @book.date %>
+</p>
 
 <p>
   <b>Isbn:</b>
@@ -46,5 +75,5 @@
 
 <%= link_to 'Print Label', '#', :id => 'print' %>
 <%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<%= link_to 'Back', book_path('manage') %>
 </div>
