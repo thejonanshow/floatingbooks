@@ -38,6 +38,12 @@ class BooksController < ApplicationController
     redirect_to books_url
   end
 
+  def fetch_data
+    @book = Book.find params[:id]
+    @book.populate_data_from_google
+    redirect to books_url
+  end
+
   def checkout
     @book = Book.find_by_isbn params[:isbn]
     if @book.checked_out_to
@@ -132,7 +138,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to(books_url) }
+      format.html { redirect_to(book_path('manage')) }
       format.xml  { head :ok }
     end
   end

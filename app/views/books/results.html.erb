@@ -8,7 +8,7 @@
           <img src="<%= book.thumb %>" alt="Cover of <%= book.title %>" />
           <% end %>
         </td>
-        <td><%= book.title %></td>
+        <td><%= link_to(book.title, book_path, :class => "results_link") %></td>
         <td><%= book.author %></td>
         <td><%= book.user.name %></td>
         <td class="checkout">
