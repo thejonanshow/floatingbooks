@@ -44,7 +44,7 @@
 
 <script type='text/javascript'>
 
-  $(document).ready(function() {
+  jQuery(document).ready(function() {
 
     var labelXml = '<%= @book.read_label_file %>';
     var label = dymo.label.framework.openLabelXml(labelXml);
@@ -65,7 +65,7 @@
         }
     }
 
-  $('#print').click(function() {
+  jQuery('#print').click(function() {
     label.print(printerName);
   });
 
