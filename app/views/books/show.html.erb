@@ -74,6 +74,6 @@
 </script>
 
 <%= link_to 'Print Label', '#', :id => 'print' %> |
-<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Edit', edit_book_path(@book) + " |" unless current_user.name != @book.user.name %>
 <%= link_to 'Back', book_path('manage') %>
 </div>

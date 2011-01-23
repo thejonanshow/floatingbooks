@@ -225,3 +225,17 @@ div#show_book p {
 div#show_book h2 {
   padding-bottom:3px;
 }
+
+/* Edit book pages */
+
+div#edit_book input {
+  margin-bottom:3px;
+}
+
+div#edit_book input#book_submit {
+  margin:7px 0;
+}
+
+div#edit_book img.book_thumb {
+  float:right;
+}

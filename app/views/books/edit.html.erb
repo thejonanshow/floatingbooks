@@ -1,8 +1,10 @@
-<h1>Editing book</h1>
+<div id="edit_book" class="results">
+  <h1>Editing book</h1>
 
-<%= render 'form' %>
+<%= image_tag(@book.thumb.gsub('&zoom=5','&zoom=1').gsub('&edge=curl',''), :class => 'book_thumb') if @book.thumb %>
 
-<%= render 'details' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @book %> |
-<%= link_to 'Back', book_path('manage') %>
+  <%= link_to 'Show', @book %> |
+  <%= link_to 'Back', book_path('manage') %>
+</div>
