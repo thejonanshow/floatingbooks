@@ -29,7 +29,7 @@
         <%= yield %>
         <% if user_signed_in? %>
           <span id="sign_out_link">Signed in as <%= current_user.email %>. Not you?
-            <%= link_to "Sign out", destroy_user_session_path %></span>
+          <%= link_to "Sign out", destroy_user_session_path %></span>
         <% end %>
 		  
       <div class="clear"></div>

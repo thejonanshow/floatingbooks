@@ -239,3 +239,28 @@ div#edit_book input#book_submit {
 div#edit_book img.book_thumb {
   float:right;
 }
+
+/* Manage Book Page */
+
+div#manage_right {
+  float:right;
+  width:242px;
+  padding-right:12px;
+}
+
+div#manage_right a#add_book {
+  display:block;
+  width:242px;
+  height:51px;
+  margin-top:35px;
+  text-indent:-424242px;
+  background:url('/images/add_book_button.jpg') no-repeat top left;
+}
+
+div#manage_right a#add_book:hover {
+  background-position:0 -51px;
+}
+
+div#manage_right a#add_book:active {
+  background-position:0 -102px;
+}
