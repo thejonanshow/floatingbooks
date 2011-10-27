@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   def name
     self.email.split('@').first.gsub('.',' ').titleize
   end
-  
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session[:omniauth]
@@ -31,26 +31,26 @@ class User < ActiveRecord::Base
       end
     end
   end
-  
+
   def apply_omniauth(omniauth)
     #add some info about the user
     #self.name = omniauth['user_info']['name'] if name.blank?
     #self.nickname = omniauth['user_info']['nickname'] if nickname.blank?
-    
+
     unless omniauth['credentials'].blank?
       user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
-      #user_tokens.build(:provider => omniauth['provider'], 
+      #user_tokens.build(:provider => omniauth['provider'],
       #                  :uid => omniauth['uid'],
-      #                  :token => omniauth['credentials']['token'], 
+      #                  :token => omniauth['credentials']['token'],
       #                  :secret => omniauth['credentials']['secret'])
     else
       user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
     end
     #self.confirm!# unless user.email.blank?
   end
-  
+
   def password_required?
     false
-    #(user_tokens.empty? || !password.blank?) && super  
+    #(user_tokens.empty? || !password.blank?) && super
   end
 end

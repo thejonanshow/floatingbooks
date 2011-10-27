@@ -10,12 +10,12 @@ q:before,q:after{content:'';}
 abbr,acronym {border:0;}
 /* reset */
 
-body { 
-  font-family:'Josefin Sans', helvetica, arial, sans-serif; 
+body {
+  font-family:'Josefin Sans', helvetica, arial, sans-serif;
 }
 
 h1, h2, h3, h4{
-  font-family:'Josefin Sans', helvetica, arial, sans-serif; 
+  font-family:'Josefin Sans', helvetica, arial, sans-serif;
 }
 
 a{color:#ff9900;}
