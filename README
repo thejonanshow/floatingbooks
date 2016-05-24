@@ -1,8 +1,8 @@
 Floatingbooks is a project developed at G5 for autonomy day 2011.
 
-It is a lending library for small or medium-sized companies that populates data from the Google books API, authenticates users with OpenID and uses QR codes and a Dymo LabelWriter 450 to track books. 
+It is a lending library for small or medium-sized companies that populates data from the Google books API, authenticates users with OpenID and uses QR codes and a Dymo LabelWriter 450 to track books.
 
-This is presently in alpha, as to say I would not recommend you try to use it in your company unless you have someone capable of modifying it extensively. That being said, we built it in 24 hours and it functions, which is quite something. 
+This is presently in alpha, as to say I would not recommend you try to use it in your company unless you have someone capable of modifying it extensively. That being said, we built it in 24 hours and it functions, which is quite something.
 
 There will be many more iterations to come and hopefully a rather polished bit of code, but for now what you see is what you get.
 

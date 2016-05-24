@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
 //
-//  $Id: DYMO.Label.Framework.js 11890 2010-05-17 00:16:48Z vbuzuev $ 
+//  $Id: DYMO.Label.Framework.js 11890 2010-05-17 00:16:48Z vbuzuev $
 //
 // Project -------------------------------------------------------------------
 //
@@ -26,10 +26,10 @@
 
 
  *  This module defines the namespace dymo.label.framework
-    
+
     Following constants are defined in the namespace:
-    
-    VERSION - the library's version number. Current version is "1.0" 
+
+    VERSION - the library's version number. Current version is "1.0"
 
     Following functions are defined in the namespace:
 
@@ -40,14 +40,14 @@
     ///     errorDetails - empty string if no error detected; error message otherwise
     function checkEnvironment()
     {
-        var result = 
+        var result =
         {
             isBrowserSupported: false,
             isFrameworkInstalled: false,
             errorDetails: ""
         }
 
-    
+
     // returns all printers supported by the DYMO Label Framework
     // printers are returned in array-like object that is an associative-array with printer name as a key as well
     // each printer object has following properties:
@@ -55,7 +55,7 @@
     // name - printer's name (print queue name on Mac)
     // modelName - printer model/driver name
     // isConnected - is printer connected to computer or not. Note: currently properly returned only for local USB-connected printers on Windows
-    // isLocal - is printer local USB-connected or shared network printer. Note: currently works on Windows only. 
+    // isLocal - is printer local USB-connected or shared network printer. Note: currently works on Windows only.
     // isTwinTurbo - is printer "LabelWriter Twin Turbo" (has two rolls). Note: the property only defined if printerType is "LabelWriterPrinter"
     // isAutoCutSupported - is Auto-Cut feature supported by the printer. Note: the property only defined if printerType is "TapePrinter"
     function getPrinters()
@@ -66,24 +66,24 @@
     // There are some considerations should be taken into account before using this function.
     // Use it only then there are no other way to load label data, that in most cases should be done using openLabelXml()
     // - full file name/url should be specified. The function will not honor relative pathes based on document.location.href
-    // - the fileName can be http:// or file:// urls. On Windows it can be a regular file name, like 'c:\users\desktop\address.label' 
+    // - the fileName can be http:// or file:// urls. On Windows it can be a regular file name, like 'c:\users\desktop\address.label'
     // - the content of the label will be loaded synchronously. So if the remote server is down there will be a timeout.
-    // - any local file can be accessed/tried to be accessed. The function is not limited by any browser restrictions. 
+    // - any local file can be accessed/tried to be accessed. The function is not limited by any browser restrictions.
     //   Though only a valid label file (according to label.xsd schema) can be loaded this still can be potential security concern.
     // - the URL is not limited to same-site-origin browser policy - any url can be opened
-    // - the proxy settings are system default settings, not nessesary browser settings. 
+    // - the proxy settings are system default settings, not nessesary browser settings.
     // returns Label object provides label manipulation methods
     function openLabelFile(fileName)
-    
-    
-     
+
+
+
     // loads label content from xml stream/string
     // labelXml - label definition as xml string
     // Note: it is a preferable way to load/open label files. Use XMLHttpRequest() or other standard browser methods to get xml string.
     // returns Label object
     function openLabelXml(labelXml)
 
-    
+
 
     // Prints one or multiple labels
     // printerName - the printer to print on. A list of printers can be obtained by getPrinters()
@@ -92,10 +92,10 @@
     // labelSetXml - LabelSet to print. LabelSet is used to print multiple labels with same layout but different data, e.g. multiple addresses.
     //               Use LabelSetBuilder class to create a LabelSet or construct xml manualy according to LabelSet.xsd
     // Returns void
-    function printLabel(printerName, printParamsXml, labelXml, labelSetXml)           
+    function printLabel(printerName, printParamsXml, labelXml, labelSetXml)
 
-              
-              
+
+
     // Creates a label raster image that can be used for label previewing
     // Params:
     // - labelXml - label to preview
@@ -106,17 +106,17 @@
     //                 In this case a default printer metrics will be used - that is LW400 for LabelWriter printers and LW400 DUO Tape for tape printers
     // Returns a string that is base64-encoded png stream of the label image. This string can be used as data: url for <img> element.
     // Note: data: urls are not supported by IE6 and IE7. IE8 supports them with the 32KB limit (so it might be not possible to preview 'large' labels)
-    function renderLabel(labelXml, renderParamsXml, printerName)                  
-    
+    function renderLabel(labelXml, renderParamsXml, printerName)
+
 
     // Loads an image from url/file and returns it as base64-encoded png stream. The loaded image is not nessesary in PNG format itself.
-    // It can be of an yformat supported by the Framework (by DYMO Label Software 8). The loaded data can be used to set 
-    // conent for image object on a label. 
+    // It can be of an yformat supported by the Framework (by DYMO Label Software 8). The loaded data can be used to set
+    // conent for image object on a label.
     // Note: the same comments as for openLabelFile() is applied to this function as well
-    // Returns a string that is base64-encoded png stream of the image. 
+    // Returns a string that is base64-encoded png stream of the image.
     function loadImageAsPngBase64(imageUri)
-    
-    
+
+
     // Creates an xml string suitable to be passed to printLabel() function as printParamsXml parameter
     // Created printing parameters are for printing on LabelWriter printers
     // Parameters:
@@ -128,9 +128,9 @@
     //      params.twinTurboRoll - the roll to print on if the printer is TwinTurbo. Use TwinTurboRoll enum to specify the value
     // Returns xml string
     function createLabelWriterPrintParamsXml(params)
-    
-    
-    
+
+
+
     // Creates an xml string suitable to pass to printLabel() function as printParamsXml parameter
     // Created printing parameters are for printing on Tape printers
     // Parameters:
@@ -139,11 +139,11 @@
     //      params.jobTitle - print job title/description
     //      params.flowDirection - prints label content as left-to-right or right-to-left use FlowDirection enum to specify values
     //      params.alignment - label alignment on the tape. Use TapeAlignment enum to specify the value.
-    //      params.cutMode - cut mode if auto-cut is supported by the printer. Use TapeCutMode enum to specify the value. 
+    //      params.cutMode - cut mode if auto-cut is supported by the printer. Use TapeCutMode enum to specify the value.
     // Returns xml string
     function createTapePrintParamsXml(params)
 
-    
+
 
     // Creates an xml string suitable to pass to renderLabel() function as renderParamsXml parameter
     // Parameters:
@@ -153,20 +153,20 @@
     //      params.shadowColor - color of label shadow
     //      params.shadowDepth -  shadow width in TWIPS. if '0' is specified no shadow is rendered
     //      params.flowDirection - prints label content as left-to-right or right-to-left use FlowDirection enum to specify values
-    //      params.pngUseDisplayResolution - if true, the png will be generated using display resolution, othewise using printer resolution. 
-    //                                       If a display resolution is used the resulting png will be smaller. 
-    //                                       Use printer resolution if resulting image is going to be zoomed, so the zoomed preview will have better quality.   
+    //      params.pngUseDisplayResolution - if true, the png will be generated using display resolution, othewise using printer resolution.
+    //                                       If a display resolution is used the resulting png will be smaller.
+    //                                       Use printer resolution if resulting image is going to be zoomed, so the zoomed preview will have better quality.
     // Returns xml string
     function createLabelRenderParamsXml(params)
 
-     
+
     /////////////////////////////////////////////////////////
     // Enums
     /////////////////////////////////////////////////////////
 
     Following 'enumerations' are defined in the namespace. It is absolutely OK to use real string values instead of enums members.
-    THe only difference is with enums mambers you will get an error earlier if the values is misspelled.  
-    
+    THe only difference is with enums mambers you will get an error earlier if the values is misspelled.
+
 
     // Specifies how objects and object text are laid down on the label. For Middle East labels/content specify RightToLeft, otherwise "LeftToRight" (default)
     var FlowDirection =
@@ -227,7 +227,7 @@
         AboveAddress: "AboveAddress",
         BelowAddress: "BelowAddress",
         Suppress: "Suppress"
-    };    
+    };
 
     //////////////////////////////////////
     // Classes
@@ -236,56 +236,56 @@
     //////////////////////////////////////
     // Label class
     //////////////////////////////////////
-    Label class is a pseudo-class, because there is no constructor function for it. An instance of this class is 
+    Label class is a pseudo-class, because there is no constructor function for it. An instance of this class is
     returned by openLabelFile() and openLabelXml() functions. The class provides methods to manipulate label content,
     e.g. set address or text on the label.
-    
+
     Label class methods:
-    
+
     // Returns current label xml as a string
     // the returned xml can be passed to functions accepts label xml as a parameter
-    // or can be used to direct content manipulations not currently supported by the Framework 
+    // or can be used to direct content manipulations not currently supported by the Framework
     function getLabelXml()
-    
+
     //Creates a label raster image that can be used for label previewing
     // This function is similar to renderLabel() described above
     function render(renderParamsXml, printerName)
-    
+
     // Prints the label. Similar to dymo.label.framework.printLabel()
     // This function is similar to printLabel() described above
-    function print(printerName, printParamsXml, labelSetXml)    
+    function print(printerName, printParamsXml, labelSetXml)
 
 
     // returns an array of object's names on the label
     function getObjectNames()
-    
+
     // returns the number of address objects on the label
     function getAddressObjectCount()
-        
+
     // Returns IntellegentMail barcode position for an Address object
     // Parameters:
     //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
     // Returns a string with one of values defined by AddressBarcodePosition 'enumeration'
     function getAddressBarcodePosition(addressIndex)
-        
+
     // Set IntelegentMail barcode position for an Address object
     // Parameters:
     //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-    //      bacodePosition - one of barcode position defined in dymo.label.framework.AddressBarcodePosition 
-    // Returns void 
+    //      bacodePosition - one of barcode position defined in dymo.label.framework.AddressBarcodePosition
+    // Returns void
     function setAddressBarcodePosition(addressIndex, barcodePosition)
-        
+
     // Returns text content of an Address object
     // Parameters:
     //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
     // Returns string contains plain text from the Address object
-    function getAddressText(addressIndex)        
-        
+    function getAddressText(addressIndex)
+
 
     // Set text content of an Address object
     // Parameters:
     //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-    //      text - plain text string contain the content. Note: current text formatting is remained on line-by-line basis  
+    //      text - plain text string contain the content. Note: current text formatting is remained on line-by-line basis
     function setAddressText(addressIndex, text)
 
     // Returns 'text' content of an object
@@ -300,7 +300,7 @@
 
     // sets text content for an object. Depends on object's type the content and/or text formatitng are set differently:
     //  - for Address the formatting is applied on line-by-line basis (using <LineFonts> list)
-    //  - for text the formatting of current first character is used for the whole text 
+    //  - for text the formatting of current first character is used for the whole text
     //  - for Barcode object it is barcode string
     //  - for Image it is base64-encoded string of image's png stream
     //  - for CircularText it is object's text
@@ -317,23 +317,23 @@
     // LabelSetBuilder class
     //////////////////////////////////////
 
-    // LabelSetBuilder is used to create a label-set to print multiple labels in one print job. 
+    // LabelSetBuilder is used to create a label-set to print multiple labels in one print job.
     // LabelSet is a collection of records. Each record contains pairs of object name and object text data/content.
-    // The data of each record are applied to all corresponend objects and for each record one label is printed.  
+    // The data of each record are applied to all corresponend objects and for each record one label is printed.
 
     LabelSetBuilder's methods:
-    
+
     // Adds a new record to the label-set
-    // Returns created LabelSetRecord object 
+    // Returns created LabelSetRecord object
     function addRecord()
-    
+
     // Convert record objects into xml format defined in LabelSet.xsd
     // Returned xml can be passed to dymo.label.framefork.printLabel() as labelSetXml parameter.
     // Parameters:
     //      records - records to convert to xml. records should be array-like object of associative-arrays with object names as keys and object text as values.
     // Return string contains xml data
-    // Note: this 'static' function can be used independed of other LabelSetBuilder methods if records data is generated by other functions  
-    LabelSetBuilder.toXml = function(records)    
+    // Note: this 'static' function can be used independed of other LabelSetBuilder methods if records data is generated by other functions
+    LabelSetBuilder.toXml = function(records)
 
 
     // Converts the builder's content to an xml string to be passed to printLabel()
@@ -348,17 +348,17 @@
     // Note: there is no assessable constructor function for this class. Instances are created and returned by addRecord() method of LabelSetBuilder class
 
     // Methods:
-    
+
     // Adds data to the record specified as text markup
     // Parameters:
     //      objectName - object name which the markup is set for
-    //      textMarkup - markup string. See TextMarkup.xsd 
+    //      textMarkup - markup string. See TextMarkup.xsd
     function setTextMarkup(objectName, textMarkup)
-    
+
     // Adds data to the record specified as plain text
     // Parameters:
     //      objectName - object name which text is set for
-    //      text - text string 
+    //      text - text string
     function setText(objectName, text)
 
     // Adds image data to the record.
@@ -399,7 +399,7 @@ dymo.label.framework.VERSION = "1.0";
     ///////////////////////////////////////////////////////////////////
 
     // Xml utils
-    // most functions are slitly modified samples from 
+    // most functions are slitly modified samples from
     // "JavaScript: The Definitive Guide, Fifth Edition" book by David Flanagan
     var Xml = {};
 
@@ -506,7 +506,7 @@ dymo.label.framework.VERSION = "1.0";
     * or more contexts) using the getNode() or getNodes() methods.
     *
     * The first argument to this constructor is the text of the XPath expression.
-    * 
+    *
     * If the expression includes any XML namespaces, the second argument must
     * be a JavaScript object that maps namespace prefixes to the URLs that define
     * those namespaces.  The properties of this object are the prefixes, and
@@ -527,7 +527,7 @@ dymo.label.framework.VERSION = "1.0";
         {
             // If we're in a W3C-compliant browser, use the W3C API to compile the text of the XPath query
             this.xpathExpr = doc.createExpression(xpathText,
-            // This function is passed a 
+            // This function is passed a
             // namespace prefix and returns the URL.
                                           function(prefix)
                                           {
@@ -556,7 +556,7 @@ dymo.label.framework.VERSION = "1.0";
     /**
     * This is the getNodes() method of XML.XPathExpression.  It evaluates the
     * XPath expression in the specified context.  The context argument should
-    * be a Document or Element object.  The return value is an array 
+    * be a Document or Element object.  The return value is an array
     * or array-like object containing the nodes that match the expression.
     */
     Xml.XPathExpression.prototype.getNodes = function(context)
@@ -599,14 +599,14 @@ dymo.label.framework.VERSION = "1.0";
                 try { doc.setProperty("SelectionNamespaces", this.namespaceString); } catch (e) { }
 
 
-                // In IE, the context must be an Element not a Document, 
+                // In IE, the context must be an Element not a Document,
                 // so if context is a document, use documentElement instead
                 if (context == doc) context = doc.documentElement;
                 // Now use the IE method selectNodes() to evaluate the expression
                 var result = context.selectNodes(this.xpathText);
 
                 // in IE8 the result is INodeSelection, not nodes themselves
-                // 
+                //
                 var a = new Array(result.length);
                 for (var i = 0; i < result.length; i++)
                 {
@@ -681,7 +681,7 @@ dymo.label.framework.VERSION = "1.0";
     // checks is browser enviroment suitable for the framework
     function checkEnvironment()
     {
-        var result = 
+        var result =
         {
             isBrowserSupported: false,
             isFrameworkInstalled: false,
@@ -735,7 +735,7 @@ dymo.label.framework.VERSION = "1.0";
             else //if (navigator.userAgent.indexOf("Chrome") != -1 || navigator.userAgent.indexOf("Opera") != -1 || navigator.userAgent.indexOf("Safari") != -1)
             {
                 result.isBrowserSupported = true;
-                
+
                 //enum installed plugin to find dymo one
                 var pluginFound = false;
                 for (var i = 0; i < navigator.plugins.length; ++i)
@@ -750,15 +750,15 @@ dymo.label.framework.VERSION = "1.0";
                             break;
                         }
                     }
-                    if (pluginFound) 
-                        break;    
-                } 
-                
+                    if (pluginFound)
+                        break;
+                }
+
                 if (pluginFound)
                     result.isFrameworkInstalled = true;
                 else
                     result.errorDetails = 'DYMO Label Framework Plugin is not installed';
-                
+
              }
              //else
              //   result.errorDetails = 'The supported browsers on Windows are Internet Explorer, Firefox, and Chrome';
@@ -769,7 +769,7 @@ dymo.label.framework.VERSION = "1.0";
             if (navigator.userAgent.indexOf("Safari") != -1 && navigator.vendor.indexOf("Apple") != -1)
             {
                 result.isBrowserSupported = true;
-                
+
                 //enum installed plugin to find dymo one
                 var pluginFound = false;
                 for (var i = 0; i < navigator.plugins.length; ++i)
@@ -784,10 +784,10 @@ dymo.label.framework.VERSION = "1.0";
                             break;
                         }
                     }
-                    if (pluginFound) 
-                        break;    
-                } 
-                
+                    if (pluginFound)
+                        break;
+                }
+
                 if (pluginFound)
                 {
                     // check version, should be at least 2.0
@@ -799,7 +799,7 @@ dymo.label.framework.VERSION = "1.0";
                 }
                 else
                     result.errorDetails = 'DYMO Label Safari Plugin is not installed';
-                
+
             }
             else
                 result.errorDetails = 'The only supported browser on Mac is Safari';
@@ -815,7 +815,7 @@ dymo.label.framework.VERSION = "1.0";
     function _createSafariPlugin()
     {
         var pluginId = '_DymoLabelFrameworkJslSafariPlugin';
-                
+
         if (!document.getElementById(pluginId))
         {
             // try to create Safari Plugin as <embed> control
@@ -827,11 +827,11 @@ dymo.label.framework.VERSION = "1.0";
             safariPlugin.hidden = true;
 
             // it is important to add it to the DOM
-            // otherwise _DymoLabelFrameworkJslSafariPlugin is unavailable and 
+            // otherwise _DymoLabelFrameworkJslSafariPlugin is unavailable and
             // it is impossible to call plug-in methods
             document.body.appendChild(safariPlugin);
         }
-        
+
         return _DymoLabelFrameworkJslSafariPlugin;
     }
 
@@ -840,7 +840,7 @@ dymo.label.framework.VERSION = "1.0";
     function _createPlugin()
     {
         var pluginId = '_DymoLabelFrameworkJslPlugin';
-                
+
         if (!document.getElementById(pluginId))
         {
             // try to create Safari Plugin as <embed> control
@@ -852,11 +852,11 @@ dymo.label.framework.VERSION = "1.0";
             plugin.hidden = true;
 
             // it is important to add it to the DOM
-            // otherwise _DymoLabelFrameworkJslSafariPlugin is unavailable and 
+            // otherwise _DymoLabelFrameworkJslSafariPlugin is unavailable and
             // it is impossible to call plug-in methods
             document.body.appendChild(plugin);
         }
-        
+
         //return _DymoLabelFrameworkJslSafariPlugin;
         return document.getElementById(pluginId);
     }
@@ -867,7 +867,7 @@ dymo.label.framework.VERSION = "1.0";
     {
         if (!_framework)
         {
-            var checkResult = checkEnvironment(); 
+            var checkResult = checkEnvironment();
             if (checkResult.errorDetails != "")
                 throw new Error(checkResult.errorDetails);
 
@@ -917,25 +917,25 @@ dymo.label.framework.VERSION = "1.0";
                     _framework = {};
                     // map functions
                     _framework.getPrinters = function() { return safariPlugin.getPrinters(); };
-                    _framework.openLabelFile = function(fileName) 
+                    _framework.openLabelFile = function(fileName)
                     {
-                        var result = safariPlugin.openLabelFile(fileName); 
-                        
+                        var result = safariPlugin.openLabelFile(fileName);
+
                         // check for error
                         if (!result)
                             throw new Error("Unable to open label file '" + fileName + "'");
-                        
+
                         return result;
                     };
                     _framework.printLabel = function(printerName, printParamsXml, labelXml, labelSetXml) { safariPlugin.printLabel(labelXml, printerName, printParamsXml, labelSetXml); };
                     _framework.renderLabel = function(labelXml, renderParamsXml, printerName) { return safariPlugin.renderLabel(labelXml, renderParamsXml, printerName); };
-                    _framework.loadImageAsPngBase64 = function(imageUri) 
-                    { 
-                        var result = safariPlugin.loadImageAsPngBase64(imageUri); 
-                        
+                    _framework.loadImageAsPngBase64 = function(imageUri)
+                    {
+                        var result = safariPlugin.loadImageAsPngBase64(imageUri);
+
                         if (!result)
                             throw new Error("Unable to load image from uri '" + imageUri + "'");
-                        
+
                         return result;
                     };
                 }
@@ -954,7 +954,7 @@ dymo.label.framework.VERSION = "1.0";
     // name - printer's name (print queue name on Mac)
     // modelName - printer model/driver name
     // isConnected - is printer connected to computer or not. Note: currently properly returned only for local USB-connected printers on Windows
-    // isLocal - is printer local USB-connected or shared network printer. Note: currently works on Windows only. 
+    // isLocal - is printer local USB-connected or shared network printer. Note: currently works on Windows only.
     // isTwinTurbo - is printer "LabelWriter Twin Turbo" (has two rolls). Note: the property only defined if printerType is "LabelWriterPrinter"
     // isAutoCutSupported - is Auto-Cut feature supported by the printer. Note: the property only defined if printerType is "TapePrinter"
     function getPrinters()
@@ -1007,12 +1007,12 @@ dymo.label.framework.VERSION = "1.0";
     // There are some considerations should be taken into account before using this function.
     // Use it only then there are no other way to load label data, that in most cases should be done using openLabelXml()
     // - full file name/url should be specified. The function will not honor relative pathes based on document.location.href
-    // - the fileName can be http:// or file:// urls. On Windows it can be a regular file name, like 'c:\users\desktop\address.label' 
+    // - the fileName can be http:// or file:// urls. On Windows it can be a regular file name, like 'c:\users\desktop\address.label'
     // - the content of the label will be loaded synchronously. So if the remote server is down there will be a timeout.
-    // - any local file can be accessed/tried to be accessed. The function is not limited by any browser restrictions. 
+    // - any local file can be accessed/tried to be accessed. The function is not limited by any browser restrictions.
     //   Though only a valid label file (according to label.xsd schema) can be loaded this still can be potential security concern.
     // - the URL is not limited to same-site-origin browser policy - any url can be opened
-    // - the proxy settings are system default settings, not nessesary browser settings. TODO: fix it by providing proxy settings params into the library (same as DLS7) or read browser proxy settings (if possible) 
+    // - the proxy settings are system default settings, not nessesary browser settings. TODO: fix it by providing proxy settings params into the library (same as DLS7) or read browser proxy settings (if possible)
     // returns Label object provides label manipulation methods
     function openLabelFile(fileName)
     {
@@ -1040,7 +1040,7 @@ dymo.label.framework.VERSION = "1.0";
         labelSetXml = labelSetXml || "";
         if (typeof(labelSetXml) != "string")
             labelSetXml = labelSetXml.toString();
-            
+
         if (typeof(labelXml) == "undefined")
                 throw new Error("printLabel(): labelXml parameter should be specified");
 
@@ -1160,10 +1160,10 @@ dymo.label.framework.VERSION = "1.0";
     //      params.shadowColor - color of label shadow
     //      params.shadowDepth -  shadow width in TWIPS. if '0' is specified no shadow is rendered
     //      params.flowDirection - prints label content as left-to-right or right-to-left use FlowDirection enum to specify values
-    //      params.pngUseDisplayResolution - if true, the png will be generated using display resolution, othewise using printer resolution. 
-    //                                       If a display resolution is used the resulting png will be smaller. 
-    //                                       Use printer resolution if resulting image is going to be zoomed, so the zoomed preview will have better quality.   
-     
+    //      params.pngUseDisplayResolution - if true, the png will be generated using display resolution, othewise using printer resolution.
+    //                                       If a display resolution is used the resulting png will be smaller.
+    //                                       Use printer resolution if resulting image is going to be zoomed, so the zoomed preview will have better quality.
+
     function createLabelRenderParamsXml(params)
     {
         if (!params)
@@ -1276,10 +1276,10 @@ dymo.label.framework.VERSION = "1.0";
     {
         /////////////////////////////////////////////////////
         // implementation details
-        ///////////////////////////////////////////////////// 
+        /////////////////////////////////////////////////////
 
         var doc = Xml.parse(labelXml);
-        
+
         //function _getLabelType()
         //{
         //    return doc.documentElement.tagName;
@@ -1287,7 +1287,7 @@ dymo.label.framework.VERSION = "1.0";
 
         // Returns current label xml as a string
         // the returned xmlcan be passed to functions accepts label xml as a parameter
-        // or can be used to direct content manipulations not currently supported by the Framework 
+        // or can be used to direct content manipulations not currently supported by the Framework
         function getLabelXml()
         {
             return Xml.serialize(doc);
@@ -1300,8 +1300,8 @@ dymo.label.framework.VERSION = "1.0";
         //      printerName - printer name the preview is generated for. Thhe preview/output cna be different on different printers,
         //                    especially on tape printers with different print head size.
         //                    An empty string can be passed if it does not matter or important on whitch printer the label will be printed.
-        //                    In this case a default printer metrics will be used that is LW400 for LabelWriter printers and LW400 DUO Tape for tape printers 
-        // Returns base64-encoded string of rendered png label image 
+        //                    In this case a default printer metrics will be used that is LW400 for LabelWriter printers and LW400 DUO Tape for tape printers
+        // Returns base64-encoded string of rendered png label image
         function render(renderParamsXml, printerName)
         {
             return renderLabel(getLabelXml(), renderParamsXml, printerName);
@@ -1359,7 +1359,7 @@ dymo.label.framework.VERSION = "1.0";
             return _getAddressObjectElements().length;
         };
 
-        // returns address object element by index 
+        // returns address object element by index
         function _getAddressObjectElementByIndex(addressIndex)
         {
             return _getAddressObjectElements()[addressIndex];
@@ -1375,7 +1375,7 @@ dymo.label.framework.VERSION = "1.0";
         // Returns IntellegentMail barcode position for an Address object
         // Parameters:
         //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-        // Returns Element object of the corresponed address object 
+        // Returns Element object of the corresponed address object
         function getAddressBarcodePosition(addressIndex)
         {
             return Xml.getElementText(Xml.getNode(_getAddressObjectElementByIndex(addressIndex), "BarcodePosition"));
@@ -1397,8 +1397,8 @@ dymo.label.framework.VERSION = "1.0";
         // Set IntelegentMail barcode position for an Address object
         // Parameters:
         //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-        //      bacodePosition - one of barcode position defined in dymo.label.framework.AddressBarcodePosition 
-        // Returns Element object of the corresponed address object 
+        //      bacodePosition - one of barcode position defined in dymo.label.framework.AddressBarcodePosition
+        // Returns Element object of the corresponed address object
         function setAddressBarcodePosition(addressIndex, barcodePosition)
         {
             _verifyAddressBarcodePosition(barcodePosition);
@@ -1409,7 +1409,7 @@ dymo.label.framework.VERSION = "1.0";
         // Returns text content of an Address object
         // Parameters:
         //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-        // Returns string contained plain text from the Address object 
+        // Returns string contained plain text from the Address object
         function getAddressText(addressIndex)
         {
             return _getAddressObjectText(_getAddressObjectElementByIndex(addressIndex));
@@ -1418,7 +1418,7 @@ dymo.label.framework.VERSION = "1.0";
         // Set text content of an Address object
         // Parameters:
         //      addressIndex - zero-based index of the address object in 'virtual' array of all address objects on the label
-        //      text - plain text string contain the content. Note: current text formatting is remained on line-by-line basis  
+        //      text - plain text string contain the content. Note: current text formatting is remained on line-by-line basis
         function setAddressText(addressIndex, text)
         {
             return _setAddressObjectText(_getAddressObjectElementByIndex(addressIndex), text);
@@ -1574,7 +1574,7 @@ dymo.label.framework.VERSION = "1.0";
 
         // sets text content for an object. Depends on object's type the content and/or text formatitng are set differently:
         //  - for Address the formatting is applied on line-by-line basis using <LineFonts> list
-        //  - for text the formatting of current first character is used for the whole text 
+        //  - for text the formatting of current first character is used for the whole text
         //  - for Barcode object it is barcode string
         //  - for Image it is base64-encoded string of image's png stream
         //  - for CircularText it is object's text
@@ -1635,7 +1635,7 @@ dymo.label.framework.VERSION = "1.0";
                     else
                     {
                         // if there is no <Image> tag then there should be <ImageLocation>
-                        // so replace <ImageLocation> with <Image> 
+                        // so replace <ImageLocation> with <Image>
                         var imageLocationElem = Xml.getNode(objectElem, "ImageLocation", null);
                         if (!imageLocationElem)
                             throw new Error("setObjectText(): <ImageLocation> is expected but not found: " + Xml.serialize(imageElem));
@@ -1684,19 +1684,19 @@ dymo.label.framework.VERSION = "1.0";
 
 
     // LabelSetBuilder class
-    // LabelSetBuilder is used to create a label-set to print multiple label in one print job. 
+    // LabelSetBuilder is used to create a label-set to print multiple label in one print job.
     // LabelSet is a collection of records. Each record contains pairs of object name and object text data/content.
-    // The data of each record are applied to all corresponend objects and for each record one label is printed.  
+    // The data of each record are applied to all corresponend objects and for each record one label is printed.
     function LabelSetBuilder()
     {
         var _records = new Array();
 
-        // Returns label set records 
+        // Returns label set records
         this.getRecords = function() { return _records; };
     };
 
     // Adds a new record to the label-set
-    // Returns created record object 
+    // Returns created record object
     LabelSetBuilder.prototype.addRecord = function()
     {
         var record = new LabelSetRecord();
@@ -1708,13 +1708,13 @@ dymo.label.framework.VERSION = "1.0";
 
     var TextMarkupTag = "<TextMarkup>";
     var TextMarkupClosedTag = "</TextMarkup>";
-    
+
     // Convert record objects into xml format defined in LabelSet.xsd
     // Returned xml can be passed to dymo.label.framefork.printLabel() as labelSetXml parameter.
     // Parameters:
     //      records - records to convert to xml. records should be array-like object of associative-arrays with object names as keys and object text as values.
     // Return string contains xml data
-    // Note: this function can be used independed of other LabelSetBuilder methods if records data is generated by other functions  
+    // Note: this function can be used independed of other LabelSetBuilder methods if records data is generated by other functions
     LabelSetBuilder.toXml = function(records)
     {
         // create xml representation of LabelSet
@@ -1774,7 +1774,7 @@ dymo.label.framework.VERSION = "1.0";
     // Adds data to the record specified as text markup
     // Parameters:
     //      objectName - object name which the markup is set for
-    //      textMarkup - markup string 
+    //      textMarkup - markup string
     LabelSetRecord.prototype.setTextMarkup = function(objectName, textMarkup)
     {
         textMarkup = textMarkup.toString();
@@ -1788,7 +1788,7 @@ dymo.label.framework.VERSION = "1.0";
     // Adds data to the record specified as plain text
     // Parameters:
     //      objectName - object name which the markup is set for
-    //      text - text string 
+    //      text - text string
     LabelSetRecord.prototype.setText = function(objectName, text)
     {
         this[objectName] = text;

@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     elsif current_user
       return '/books/manage'
     end
-    super( resource ) 
+    super( resource )
   end
-  
+
 end
